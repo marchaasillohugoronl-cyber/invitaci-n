@@ -10,7 +10,7 @@ body {
 
 /* Portada principal */
 .hero {
-  background: url('../img/fondo.jpg') center/cover no-repeat;
+  background: url('../img/fondo_1.jpg') center/cover no-repeat;
   height: 100vh;
   display: flex;
   align-items: center;
