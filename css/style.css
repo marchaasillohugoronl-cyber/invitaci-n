@@ -10,7 +10,8 @@ body {
 
 /* Portada principal */
 .hero {
-  background: url('../img/fondo_1.jpg') center/cover no-repeat;
+  height: 100vh;
+  background: url('https://media.istockphoto.com/id/582297490/es/foto/ramo-de-rosas-rojas-sobre-fondo-negro-vista-superior.webp?s=2048x2048&w=is&k=20&c=Gx2vMWGvsBk33vkqjHTzqPEkmCNVUynLXAycmSei0BU=') center/cover no-repeat;
   height: 100vh;
   display: flex;
   align-items: center;

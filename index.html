@@ -1,70 +1,387 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invitación de Boda - Ana & Carlos</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script defer src="js/script.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación de Boda - Irene & Simón</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 100%);
+  color: #333;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), 
+              url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.overlay {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  max-width: 800px;
+}
+
+.nombres {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.3rem;
+  animation: fadeIn 2s;
+}
+
+.frase {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  opacity: 0.95;
+}
+
+.fecha {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+/* Contador Regresivo */
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.countdown-item {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1.5rem;
+  border-radius: 15px;
+  min-width: 100px;
+  backdrop-filter: blur(5px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.countdown-number {
+  font-size: 3rem;
+  font-weight: bold;
+  display: block;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.countdown-label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 3rem;
+  background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Contenido */
+.contenedor {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 3rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #c06c84;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 0.8rem 1.5rem;
+  border: 2px solid #ff6b9d;
+  background: white;
+  color: #ff6b9d;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+  background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+  color: white;
+  transform: scale(1.05);
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.5s;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-content h3 {
+  color: #c06c84;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.tab-content p,
+.tab-content ul {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.tab-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.tab-content li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ffe0f0;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: #c06c84;
+  color: white;
+  margin-top: 3rem;
+}
+
+footer p {
+  margin: 0.5rem 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Ajuste de imagen de fondo para móviles */
+  .hero {
+    background-position: center center;
+    background-size: cover;
+    background-attachment: scroll;
+  }
+  
+  .nombres {
+    font-size: 2.5rem;
+  }
+  
+  .countdown {
+    gap: 1rem;
+  }
+  
+  .countdown-item {
+    min-width: 80px;
+    padding: 1rem;
+  }
+  
+  .countdown-number {
+    font-size: 2rem;
+  }
+  
+  .contenedor {
+    padding: 1.5rem;
+    margin: 2rem 1rem;
+  }
+  
+  .menu {
+    flex-direction: column;
+  }
+  
+  .tab-btn {
+    width: 100%;
+  }
+}
+
+/* Ajustes adicionales para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .hero {
+    background-position: 40% center;
+    background-size: cover;
+  }
+}
+</style>
 </head>
 <body>
-  <!-- Portada principal -->
-  <section class="hero">
-    <div class="overlay fade-in">
-      <h1 class="nombres">Irene      &      Simón</h1>
-      <p class="frase">“El amor todo lo puede, todo lo cree, todo lo espera, todo lo soporta.”</p>
-      <p class="fecha">27 de Diciembre de 2025</p>
-      <a href="#contenido" class="btn">Entrar a la invitación</a>
-    </div>
-  </section>
+<!-- Portada principal -->
+<section class="hero">
+<div class="overlay fade-in">
+<h1 class="nombres">Irene & Simón</h1>
+<p class="frase">"El amor todo lo puede, todo lo cree, todo lo espera, todo lo soporta."</p>
+<p class="fecha">27 de Diciembre de 2025</p>
 
-  <!-- Contenido principal -->
-  <section id="contenido" class="contenedor fade-in">
-    <h2>Detalles de la Boda</h2>
+<!-- Contador Regresivo -->
+<div class="countdown" id="countdown">
+  <div class="countdown-item">
+    <span class="countdown-number" id="days">0</span>
+    <span class="countdown-label">Días</span>
+  </div>
+  <div class="countdown-item">
+    <span class="countdown-number" id="hours">0</span>
+    <span class="countdown-label">Horas</span>
+  </div>
+  <div class="countdown-item">
+    <span class="countdown-number" id="minutes">0</span>
+    <span class="countdown-label">Minutos</span>
+  </div>
+  <div class="countdown-item">
+    <span class="countdown-number" id="seconds">0</span>
+    <span class="countdown-label">Segundos</span>
+  </div>
+</div>
 
-    <!-- Botones de navegación -->
-    <div class="menu">
-      <button class="tab-btn active" data-tab="novios">Novios</button>
-      <button class="tab-btn" data-tab="familia">Hijos</button>
-      <button class="tab-btn" data-tab="evento">Lugar del Evento</button>
-      <button class="tab-btn" data-tab="artistas">Artistas Invitados</button>
-    </div>
+<a href="#contenido" class="btn">Entrar a la invitación</a>
+</div>
+</section>
 
-    <!-- Contenido dinámico -->
-    <div class="tab-content active" id="novios">
-      <h3>Los Novios</h3>
-      <p>Con alegría y amor, <strong>IRENE & SIMON</strong> te invitan a celebrar su unión.</p>
-      <p>Nos conocimos hace --- años y desde entonces compartimos sueños, risas y aventuras. Este día representa el inicio de una nueva etapa juntos. 💕</p>
-    </div>
+<!-- Contenido principal -->
+<section id="contenido" class="contenedor fade-in">
+<h2>Detalles de la Boda</h2>
 
-    <div class="tab-content" id="familia">
-      <h3>Padres e Hijos</h3>
-      <p><strong>Padres de la Novia:</strong> María López y José García</p>
-      <p><strong>Padres del Novio:</strong> Carmen Ruiz y Antonio Pérez</p>
-      <p><strong>Hijos:</strong> AYDEE. HUGO Y FLOR MAYTE, quienes también comparten con nosotros este momento especial </p>
-    </div>
+<!-- Botones de navegación -->
+<div class="menu">
+<button class="tab-btn active" data-tab="novios">Novios</button>
+<button class="tab-btn" data-tab="familia">Hijos</button>
+<button class="tab-btn" data-tab="evento">Lugar del Evento</button>
+<button class="tab-btn" data-tab="artistas">Artistas Invitados</button>
+</div>
 
-    <div class="tab-content" id="evento">
-      <h3>Lugar del Evento</h3>
-      <ul>
-        <li><strong>Ceremonia:</strong> Iglesia San Miguel – 16:00 hrs</li>
-        <li><strong>Recepción:</strong> Hacienda El Sol – 18:00 hrs</li>
-        <li><strong>Punto de concentración:</strong> Plaza Central, 15:00 hrs</li>
-      </ul>
-      <p></p>
-    </div>
+<!-- Contenido dinámico -->
+<div class="tab-content active" id="novios">
+<h3>Los Novios</h3>
+<p>Con alegría y amor, <strong>IRENE & SIMÓN</strong> te invitan a celebrar su unión.</p>
+<p>Nos conocimos hace años y desde entonces compartimos sueños, risas y aventuras. Este día representa el inicio de una nueva etapa juntos. 💕</p>
+</div>
 
-    <div class="tab-content" id="artistas">
-      <h3>Artistas Invitados</h3>
-      <p> <strong>Grupo Romance</strong> – Música en vivo durante la cena</p>
-      <p> <strong>DJ Luna</strong> – Fiesta hasta el amanecer</p>
-      <p> <strong>Cuarteto Armonía</strong> – Música clásica durante la ceremonia</p>
-    </div>
-  </section>
+<div class="tab-content" id="familia">
+<h3>Padres e Hijos</h3>
+<p><strong>Padres de la Novia:</strong> María López y José García</p>
+<p><strong>Padres del Novio:</strong> Carmen Ruiz y Antonio Pérez</p>
+<p><strong>Hijos:</strong> AYDEE, HUGO Y FLOR MAYTE, quienes también comparten con nosotros este momento especial 👨‍👩‍👧‍👦</p>
+</div>
 
-  <footer>
-    <p>Con amor, IRENE & SIMON </p>
-    <p>ing/sofware [LsD_NuX:HUGO MACHACAS]</p>
-  </footer>
+<div class="tab-content" id="evento">
+<h3>Lugar del Evento</h3>
+<ul>
+<li><strong>Ceremonia:</strong> Iglesia San Miguel – 16:00 hrs</li>
+<li><strong>Recepción:</strong> Hacienda El Sol – 18:00 hrs</li>
+<li><strong>Punto de concentración:</strong> Plaza Central, 15:00 hrs</li>
+</ul>
+</div>
+
+<div class="tab-content" id="artistas">
+<h3>Artistas Invitados</h3>
+<p>🎵 <strong>Grupo Romance</strong> – Música en vivo durante la cena</p>
+<p>🎧 <strong>DJ Luna</strong> – Fiesta hasta el amanecer</p>
+<p>🎻 <strong>Cuarteto Armonía</strong> – Música clásica durante la ceremonia</p>
+</div>
+</section>
+
+<footer>
+<p>Con amor, IRENE & SIMÓN 💕</p>
+<p></p>
+</footer>
+
+<script>
+// Contador regresivo
+function updateCountdown() {
+  const weddingDate = new Date('2025-12-27T16:00:00').getTime();
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById('days').textContent = days;
+  document.getElementById('hours').textContent = hours;
+  document.getElementById('minutes').textContent = minutes;
+  document.getElementById('seconds').textContent = seconds;
+
+  if (distance < 0) {
+    document.getElementById('countdown').innerHTML = '<h2 style="color: white;">¡Es hoy! 🎉💒</h2>';
+  }
+}
+
+// Actualizar cada segundo
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// Sistema de pestañas
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const targetTab = button.getAttribute('data-tab');
+    
+    tabButtons.forEach(btn => btn.classList.remove('active'));
+    tabContents.forEach(content => content.classList.remove('active'));
+    
+    button.classList.add('active');
+    document.getElementById(targetTab).classList.add('active');
+  });
+});
+
+// Smooth scroll
+document.querySelector('a[href^="#"]').addEventListener('click', function(e) {
+  e.preventDefault();
+  const target = document.querySelector(this.getAttribute('href'));
+  target.scrollIntoView({ behavior: 'smooth' });
+});
+</script>
 </body>
 </html>
